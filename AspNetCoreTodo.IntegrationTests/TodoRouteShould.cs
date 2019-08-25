@@ -19,20 +19,18 @@ namespace AspNetCoreTodo.IntegrationTests
         {
             // Arrange
             var request = new HttpRequestMessage(
-                HttpMethod.Get, "/todo");
-
+            HttpMethod.Get, "/todo");
             // Act: request the /todo route
             var response = await _client.SendAsync(request);
-
             // Assert: the user is sent to the login page
             Assert.Equal(
-                HttpStatusCode.Redirect,
-                response.StatusCode);
-
+            HttpStatusCode.Redirect,
+            response.StatusCode);
             Assert.Equal(
-                "http://localhost:8888/Account" +
-                "/Login?ReturnUrl=%2Ftodo",
-                response.Headers.Location.ToString());
+            "http://localhost:8888/Account" +
+            "/Login?ReturnUrl=%2Ftodo",
+            response.Headers.Location.ToString());
         }
+        
     }
 }
